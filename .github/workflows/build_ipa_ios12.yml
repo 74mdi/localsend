@@ -13,19 +13,14 @@ jobs:
         with:
           ref: ios12-build
 
-      - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: aarch64-apple-ios,aarch64-apple-ios-sim
-
       - name: Setup Flutter SDK
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.5'
           channel: 'stable'
 
-      - name: Install dependencies (cargokit)
-        working-directory: packages/localsend_isolates/rust_builder/cargokit/build_tool
+      - name: Install dependencies (common)
+        working-directory: common
         run: flutter pub get
 
       - name: Install dependencies (app)
